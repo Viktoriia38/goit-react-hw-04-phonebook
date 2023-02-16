@@ -1,0 +1,27 @@
+.contactList {
+    list-style: none;
+    margin: auto;
+}
+
+.contactItem {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.contactNumber {
+    margin-left: 15px;
+    font-weight: 600;
+}
+
+.contactBtn {
+    padding: 15px 90px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 600;
+    font-size: 20px;
+    border-radius: 10px;
+    background-color: rgb(181, 255, 230);
+    margin-left: 35px;
+}

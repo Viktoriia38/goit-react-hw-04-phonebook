@@ -1,0 +1,34 @@
+.phonebook {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+}
+
+.number,
+.name,
+.addContact {
+margin: 0 auto;
+
+font-family: 'Times New Roman', Times, serif;
+font-weight: 600;
+font-size: 20px;
+}
+
+.addContact {
+    border-radius: 10px;
+    padding: 15px 90px;    
+    background-color: rgb(181, 255, 230);
+}
+
+.userName,
+.userNumber {
+    width: 250px;
+    height: 30px;
+    margin: 0 20px 20px;
+    padding: 15px;
+
+    font-size: 20px;
+    border-radius: 10px;
+}
+

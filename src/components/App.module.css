@@ -1,0 +1,16 @@
+.phonebook {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.phonebookTitle,
+.contactTitle {
+text-align: center;
+font-family: 'Times New Roman', Times, serif;
+font-style: italic;
+font-size: 80px;
+font-weight: 600;
+}
+
