@@ -1,61 +1,70 @@
 import PropTypes from 'prop-types';
-import { Component } from 'react';
+import { useState } from 'react';
 import css from './ContactForm.module.css';
 
-export class ContactForm extends Component {
-  state = {
-    name: '',
-    number: '',
-  };
+export function ContactForm(props) {
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
 
-  handleChange = e => {
+  const handleChange = e => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+
+      case 'number':
+        setNumber(value);
+        break;
+
+      default:
+        return;
+    }
   };
 
-  handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit(this.state);
-    this.reset();
+    props.onSubmit({ name, number });
+    reset();
   };
 
-  reset = () => {
-    this.setState({ name: '', number: '' });
+  const reset = () => {
+    setName('');
+    setNumber('');
   };
 
-  render() {
-    return (
-      <form onSubmit={this.handleSubmit} className={css.phonebook}>
-        <label className={css.name} htmlFor="">
-          Name
-          <input
-            onChange={this.handleChange}
-            type="text"
-            className={css.userName}
-            name="name"
-            value={this.state.name || ''}
-            required
-          />
-        </label>
-        <label className={css.number} htmlFor="">
-          Number
-          <input
-            onChange={this.handleChange}
-            type="tel"
-            className={css.userNumber}
-            name="number"
-            value={this.state.number}
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
-          />
-        </label>
-        <button type="submit" className={css.addContact}>
-          Add contact
-        </button>
-      </form>
-    );
-  }
+  return (
+    <form onSubmit={handleSubmit} className={css.phonebook}>
+      <label className={css.name} htmlFor="">
+        Name
+        <input
+          onChange={handleChange}
+          type="text"
+          className={css.userName}
+          name="name"
+          value={name || ''}
+          required
+        />
+      </label>
+      <label className={css.number} htmlFor="">
+        Number
+        <input
+          onChange={handleChange}
+          type="tel"
+          className={css.userNumber}
+          name="number"
+          value={number}
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          required
+        />
+      </label>
+      <button type="submit" className={css.addContact}>
+        Add contact
+      </button>
+    </form>
+  );
 }
 
 ContactForm.propTypes = {
